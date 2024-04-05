@@ -34,10 +34,7 @@ class Stylist():
         self.conversation_history.append(("stylist", output))
 
         return output
-
-
-
-
+    
     
     def get_prompt(self):
         """

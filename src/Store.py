@@ -36,7 +36,20 @@ class Store():
             return stylist_output
         elif stylist_output.startswith("[SalesPerson]"):
             stylist_output = stylist_output[14:]
-            return self.handle_salesperson(self.request_items(stylist_output))
+            return self.handle_sales(stylist_output)
         else:
             return self.handle_stylist(self.stylist.answer(("metadata", "Your output is not valid. Please try again.")))
+        
+    def handle_sales(self, stylist_output):
+        items = self.salesperson.request_items(stylist_output)
+        # look for the items in the vector database
+        descriptions = [self.get_description(item) for item in items]
+        return self.salesperson.answer(("salesperson", descriptions))
+    
+    def get_description(self, item):
+        
+
+    
+
+
 
